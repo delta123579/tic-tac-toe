@@ -18,6 +18,7 @@ const winPattern = [
 ];
   const resetgame =()=>{
     turnO = true;
+    count = 0;
     msgcontainer.classList.add("hide");
    enableBoxes();
   }
@@ -28,14 +29,20 @@ const showWinner = (winner)=> {
     };
     const disableBoxes = ()=>{
         for(let box of boxes)
-            box.disabled = true;
+        box.disabled = true;
     };
     const enableBoxes = ()=>{
         for(let box of boxes){
-            box.disabled = false;
+        box.disabled = false;
         box.innerText = "";
+        box.classList.remove("o-color" , "x-color");
         }
     };
+    const gameDraw = () => {
+        msg.innerText = `Game is Draw.`;
+        msgcontainer.classList.remove("hide");
+        disableBoxes();
+    }
 const checkWinner = ()=> {
    for (let pattern of winPattern){
     let pos1Val = boxes[pattern[0]].innerText;
@@ -48,23 +55,30 @@ const checkWinner = ()=> {
         return  true;
         }
     }
-   }
-   return false;
-};
+    }
+    return false;
+   };
 boxes.forEach((box) => {
     box.addEventListener("click", () => {
         if(turnO){
             box.innerText = "O";
+            box.classList.remove("x-color");
+            box.classList.add("o-color");
             turnO = false;
         }else{
             box.innerText = "X";
-            turnO = true
+            box.classList.remove("o-color");
+            box.classList.add("x-color");
+            turnO = true;
         }
         box.disabled = true;
         count++;
         
 
-        checkWinner();
+        let winner = checkWinner();
+        if (!winner && count === 9) {
+            gameDraw();
+        }
     });
  
 });
