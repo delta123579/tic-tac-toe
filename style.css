@@ -53,6 +53,7 @@ h1{
 }
 .msg-container {
     margin-top: 5vmin;
+    margin-bottom: 4vmin;
     height: 20vmin;
     display: flex;
     justify-content: center;
