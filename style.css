@@ -8,7 +8,7 @@ body{
 }
 .container{
     width: 90%;
-    grid-template-columns: repeat(3 ' 1fr');
+    grid-template-columns: repeat(3 , 1fr,);
     gap: 10px;
     max-width: 400px;
     display: grid;
@@ -21,13 +21,13 @@ h1{
    display: grid;
    grid-template-columns: repeat(3, 1fr);
    gap: 6px;
-   width: 60vh;
+   width: 90vw;
    max-width: 400px;
    margin: 40px auto;
 }
 .box{
-    width: 19vh;
-    height: 19vh;
+    width: 100%;
+    aspect-ratio: 1/1;
     border-radius: 10px;
     background-color: #8EA4D2;
     border: none;
